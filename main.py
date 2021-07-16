@@ -30,5 +30,10 @@ while True:
       cv2.rectangle(img, box, color=(0,255,0), thickness=3)
       cv2.putText(img, classNames[classId-1], (box[0]+10, box[1]+30), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0),2)
 
-  cv2.imshow("Output", img)
-  cv2.waitKey(1)
+  if cv2.waitKey(1) & 0xFF == 27:
+    cap.release()
+    cv2.destroyAllWindows()
+  else:
+    cv2.imshow("Output", img)
+    cv2.waitKey(1)
+
